@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>笨呆呆的Android之旅</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-09-17T04:29:52.864Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>笨呆呆</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MacBooK pro编译Android 8.1源码</title>
+    <link href="http://yoursite.com/2019/09/17/MacBooK-pro%E7%BC%96%E8%AF%91Android-8-1%E6%BA%90%E7%A0%81/"/>
+    <id>http://yoursite.com/2019/09/17/MacBooK-pro编译Android-8-1源码/</id>
+    <published>2019-09-17T04:28:12.000Z</published>
+    <updated>2019-09-17T04:29:52.864Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MacBooK-pro编译Android-8-1源码&quot;&gt;&lt;a href=&quot;#MacBooK-pro编译Android-8-1源码&quot; class=&quot;headerlink&quot; title=&quot;MacBooK pro编译Android 8.1源码&quot;&gt;&lt;/a&gt;MacBooK pro编译Android 8.1源码&lt;/h1&gt;&lt;p&gt;[TOC]&lt;/p&gt;&lt;h2 id=&quot;工具&quot;&gt;&lt;a href=&quot;#工具&quot; class=&quot;headerlink&quot; title=&quot;工具&quot;&gt;&lt;/a&gt;工具&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;macbook pro 18款,16G内存,500G硬盘&lt;/li&gt;
+&lt;li&gt;系统版本:10.14.6&lt;/li&gt;
+&lt;li&gt;java 8,xcode是最新的10.3&lt;/li&gt;
+&lt;/ol&gt;&lt;h2 id=&quot;原料&quot;&gt;&lt;a href=&quot;#原料&quot; class=&quot;headerlink&quot; title=&quot;原料&quot;&gt;&lt;/a&gt;原料&lt;/h2&gt;&lt;p&gt;1.Android源码一份 &lt;a href=&quot;https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ&lt;/a&gt;&lt;br&gt;2.macPorts 一份 &lt;a href=&quot;https://www.macports.org/install.php&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.macports.org/install.php&lt;/a&gt;&lt;br&gt;3.macOS 10.12 SDK一份 &lt;a href=&quot;https://github.com/phracker/MacOSX-SDKs/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/phracker/MacOSX-SDKs/releases&lt;/a&gt;&lt;br&gt;4.HAXM 一份 &lt;a href=&quot;https://github.com/intel/haxm/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://github.com/intel/haxm/releases&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="Android源码" scheme="http://yoursite.com/tags/Android%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
+  
+</feed>

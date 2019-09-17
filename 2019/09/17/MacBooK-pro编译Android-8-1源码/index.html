@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="alternate" href="/atom.xml" title="笨呆呆的Android之旅" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="MacBooK pro编译Android 8.1源码[TOC]工具 macbook pro 18款,16G内存,500G硬盘 系统版本:10.14.6 java 8,xcode是最新的10.3 原料1.Android源码一份 https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ2.macPorts 一份 https://www.macports.org/i">
+<meta name="keywords" content="Android源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacBooK pro编译Android 8.1源码">
+<meta property="og:url" content="http://yoursite.com/2019/09/17/MacBooK-pro编译Android-8-1源码/index.html">
+<meta property="og:site_name" content="笨呆呆的Android之旅">
+<meta property="og:description" content="MacBooK pro编译Android 8.1源码[TOC]工具 macbook pro 18款,16G内存,500G硬盘 系统版本:10.14.6 java 8,xcode是最新的10.3 原料1.Android源码一份 https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ2.macPorts 一份 https://www.macports.org/i">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/19-9-16/15686221154315.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/19-9-16/15686222064457.jpg">
+<meta property="og:updated_time" content="2019-09-17T04:29:52.864Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MacBooK pro编译Android 8.1源码">
+<meta name="twitter:description" content="MacBooK pro编译Android 8.1源码[TOC]工具 macbook pro 18款,16G内存,500G硬盘 系统版本:10.14.6 java 8,xcode是最新的10.3 原料1.Android源码一份 https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ2.macPorts 一份 https://www.macports.org/i">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/19-9-16/15686221154315.jpg">
+  <link rel="canonical" href="http://yoursite.com/2019/09/17/MacBooK-pro编译Android-8-1源码/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>MacBooK pro编译Android 8.1源码 | 笨呆呆的Android之旅</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笨呆呆的Android之旅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">1</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">0</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">1</span></a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/MacBooK-pro编译Android-8-1源码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="笨呆呆">
+      <meta itemprop="description" content="努力成为一个普通人">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笨呆呆的Android之旅">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">MacBooK pro编译Android 8.1源码
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-17 12:28:12 / 修改时间：12:29:52" itemprop="dateCreated datePublished" datetime="2019-09-17T12:28:12+08:00">2019-09-17</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="MacBooK-pro编译Android-8-1源码"><a href="#MacBooK-pro编译Android-8-1源码" class="headerlink" title="MacBooK pro编译Android 8.1源码"></a>MacBooK pro编译Android 8.1源码</h1><p>[TOC]</p><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ol>
+<li>macbook pro 18款,16G内存,500G硬盘</li>
+<li>系统版本:10.14.6</li>
+<li>java 8,xcode是最新的10.3</li>
+</ol><h2 id="原料"><a href="#原料" class="headerlink" title="原料"></a>原料</h2><p>1.Android源码一份 <a href="https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ" target="_blank" rel="noopener">https://pan.baidu.com/s/113Bp4qial-wzRhJmwIOfRQ</a><br>2.macPorts 一份 <a href="https://www.macports.org/install.php" target="_blank" rel="noopener">https://www.macports.org/install.php</a><br>3.macOS 10.12 SDK一份 <a href="https://github.com/phracker/MacOSX-SDKs/releases" target="_blank" rel="noopener">https://github.com/phracker/MacOSX-SDKs/releases</a><br>4.HAXM 一份 <a href="https://github.com/intel/haxm/releases" target="_blank" rel="noopener">https://github.com/intel/haxm/releases</a></p><a id="more"></a>
+
+
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><p>开始之前请先确认自己的java环境已经Android环境已经配置好,你要是Android开发,一般没什么问题</p>
+<h3 id="1-下载源码"><a href="#1-下载源码" class="headerlink" title="1. 下载源码"></a>1. 下载源码</h3><p>下载Android8.1的Android源码,得到android-8.1.0_r1压缩包,自己也可以去下载,不过这个时间会非常的长,根据个人口味选择</p>
+<h3 id="2-创建磁盘映像"><a href="#2-创建磁盘映像" class="headerlink" title="2. 创建磁盘映像"></a>2. 创建磁盘映像</h3><p>创建一个不少于150G的磁盘映像,我编译下载实际占用120G多一点</p>
+<p> <strong>通过命令创建</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hdiutil create -type SPARSE -fs <span class="string">'Case-sensitive Journaled HFS+'</span> -size <span class="number">190</span>g ~/自己想要配置的路径/android.dmg</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过磁盘工具创建</strong></p>
+<p><img src="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/19-9-16/15686221154315.jpg" alt="-w1061"><br><img src="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/19-9-16/15686222064457.jpg" alt="-w412"></p>
+<p><strong>note:</strong></p>
+<ol>
+<li>这个稀松硬盘镜像是可以和你的mac共享磁盘空间的,你磁盘空间实际使用多少就占用多少</li>
+<li>名称主要注意,<strong>一定要用英文,不能使用默认中文的未命名</strong>,不然编译的时候会报一个某个文件找不到的错</li>
+<li><strong>一定要用英文,不能使用默认中文的未命名</strong></li>
+<li><strong>一定要用英文,不能使用默认中文的未命名</strong></li>
+</ol>
+<h3 id="3-安装macPorts软件"><a href="#3-安装macPorts软件" class="headerlink" title="3.安装macPorts软件"></a>3.安装macPorts软件</h3><p>如果不出意外的话,你在安装macPorts肯定会卡住,因为这个软件同步源的默认网址那是相当的慢,有人说开全局VPN,实际上还是不行,那怎么办?先强制退出安装器,点击mac的重启按钮是,它会自动弹出来一个安装进程的一个弹窗,在强制退出,当然你通过命令找到它关掉也可以.然后然后是更换源,手动更新,一般安装的时候环境变量就自动配置好了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cd /opt/local/etc/macports/</span><br></pre></td></tr></table></figure>
+
+<p>找到下面的sources.conf文件夹,通过vi编辑器来修改这一行代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]</span><br></pre></td></tr></table></figure>
+
+<p>改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://distfiles.macports.org/ports.tar.gz [default]</span><br></pre></td></tr></table></figure>
+
+<p>再来手动进行更新源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo port -d sync</span><br></pre></td></tr></table></figure>
+
+<p>安装Make、Git 和 GPG 软件包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POSIXLY_CORRECT=1 sudo port install gmake libsdl git gnupg</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-下载Mac-SDK-10-12"><a href="#4-下载Mac-SDK-10-12" class="headerlink" title="4.下载Mac SDK 10.12"></a>4.下载Mac SDK 10.12</h3><p>正常情况下你现在编译肯定会报错:Could not find a supported mac sdk: [“10.10” “10.11” “10.12” “10.13”]</p>
+<p>所以我们直接下一个10.12 SDK放进去,网上有人说修改文件什么的,在我电脑上面我也没有找到那个文件,还是添加SDK方法的好使,一劳永逸</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/</span><br></pre></td></tr></table></figure>
+
+<p>把下载的sdk包解压到上面的路径即可</p>
+<h3 id="5-解除文件数量限制"><a href="#5-解除文件数量限制" class="headerlink" title="5.解除文件数量限制"></a>5.解除文件数量限制</h3><p>解除mac同时打开文件数量的限制:<br><code>$ sudo vi  ~/.bash_profile</code></p>
+<p>添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># set the number of open files to be 1024</span><br><span class="line">ulimit -S -n 1024</span><br></pre></td></tr></table></figure>
+
+<p>也可以再大一点</p>
+<h3 id="6-设置bison"><a href="#6-设置bison" class="headerlink" title="6.设置bison"></a>6.设置bison</h3><p>这个一般都会有问题,所以编译之前先测试一下,cd到你解压Android源码的地方,执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prebuilts/misc/darwin-x86/bison/bison --version</span><br></pre></td></tr></table></figure>
+
+<p>如果显示是Abort trap: 6,则是有问题,如果不处理的话,编译的过程中则会报</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ninja: build stopped: subcommand failed.</span><br><span class="line">ninja failed with: exit status 1</span><br></pre></td></tr></table></figure>
+
+<p>解决方案:</p>
+<p>有人说安装bison通过软连接来进行处理,实测不行,</p>
+<p>1.创建patch-high-sierra.patch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd external/bison</span><br><span class="line">touch patch-high-sierra.patch</span><br><span class="line">sudo vi patch-high-sierra.patch</span><br></pre></td></tr></table></figure>
+
+<p>插入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">With format string strictness, High Sierra also enforces that %n isn&apos;t used</span><br><span class="line">in dynamic format strings, but we should just disable its use on darwin in</span><br><span class="line">general.</span><br><span class="line"> </span><br><span class="line">--- lib/vasnprintf.c.orig   2017-06-22 15:19:15.000000000 -0700</span><br><span class="line">+++ lib/vasnprintf.c    2017-06-22 15:20:20.000000000 -0700</span><br><span class="line">@@ -4869,7 +4869,7 @@ VASNPRINTF (DCHAR_T *resultbuf, size_t *</span><br><span class="line"> #endif</span><br><span class="line">                   *fbp = dp-&gt;conversion;</span><br><span class="line"> #if USE_SNPRINTF</span><br><span class="line">-# if !(((__GLIBC__ &gt; 2 || (__GLIBC__ == 2 &amp;&amp; __GLIBC_MINOR__ &gt;= 3)) &amp;&amp; !defined __UCLIBC__) || ((defined _WIN32 || defined __WIN32__) &amp;&amp; ! defined __CYGWIN__))</span><br><span class="line">+# if !defined(__APPLE__) &amp;&amp; !(((__GLIBC__ &gt; 2 || (__GLIBC__ == 2 &amp;&amp; __GLIBC_MINOR__ &gt;= 3)) &amp;&amp; !defined __UCLIBC__) || ((defined _WIN32 || defined __WIN32__) &amp;&amp; ! defined __CYGWIN__))</span><br><span class="line">                 fbp[1] = &apos;%&apos;;</span><br><span class="line">                 fbp[2] = &apos;n&apos;;</span><br><span class="line">                 fbp[3] = &apos;\0&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>2.编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">patch -p0 &lt; patch-high-sierra.patch  </span><br><span class="line">mm</span><br></pre></td></tr></table></figure>
+
+<p>如果没有mm命令,在源码根目录执行,然后回来在执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">source build/envsetup.sh</span><br><span class="line">lunch 24</span><br></pre></td></tr></table></figure>
+
+<p>3.拷贝</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ./out/host/darwin-x86/obj/EXECUTABLES/bison_intermediates/bison ./prebuilts/misc/darwin-x86/bison/bison</span><br></pre></td></tr></table></figure>
+
+<p>4.验证</p>
+<p>最后通过命令验证是否设置成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prebuilts/misc/darwin-x86/bison/bison --version</span><br></pre></td></tr></table></figure>
+
+<p>正常会提示一个版本号,我的提示是2.7</p>
+<h3 id="7-设置JVM的最大堆栈"><a href="#7-设置JVM的最大堆栈" class="headerlink" title="7.设置JVM的最大堆栈"></a>7.设置JVM的最大堆栈</h3><p>为了防止OOM,直接提前设置一下.<br><code>sudo vi ./prebuilts/sdk/tools/jack-admin</code><br>编辑文件,找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JACK_SERVER_VM_ARGUMENTS=&quot;$&#123;JACK_SERVER_VM_ARGUMENTS:=-Dfile.encoding=UTF-8&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>在后面添加-Xmx8192M,这个根据自己电脑的内存大小自己设置.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JACK_SERVER_VM_ARGUMENTS=&quot;$&#123;JACK_SERVER_VM_ARGUMENTS:=-Dfile.encoding=UTF-8 -Xmx8192M&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-下载驱动"><a href="#8-下载驱动" class="headerlink" title="8.下载驱动"></a>8.下载驱动</h3><p>驱动不要下载错,选择android-8.1.0_r1和对应的版本</p>
+<p><a href="https://developers.google.com/android/drivers" target="_blank" rel="noopener">https://developers.google.com/android/drivers</a></p>
+<p>最后解压到源码根目录,执行.sh文件,会在源码中创建vendor文件夹</p>
+<h3 id="9-编译"><a href="#9-编译" class="headerlink" title="9.编译"></a>9.编译</h3><p>1.清除一下原来的缓存<br><code>make clobber</code></p>
+<p>2.设置环境<br><code>source build/envsetup.sh</code></p>
+<p>3.选择版本,我选择的是6<br><code>lunch</code></p>
+<p>4.编译<br>根据自己的实际情况选择合适的线程数<br><code>make -j8</code></p>
+<p>5.等待奇迹出现</p>
+<h3 id="10-模拟器"><a href="#10-模拟器" class="headerlink" title="10.模拟器"></a>10.模拟器</h3><p>1.编译好以后,运行emulator,不出意外,你会得到:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Failed to open the hax module</span><br><span class="line">Warning: requested RAM 2048M too high for your system. Reducing to maximum supported size 0M</span><br><span class="line">Hax is enabled</span><br><span class="line">Hax ram_size 0x0</span><br><span class="line">Failed to open the hax module</span><br><span class="line">No accelerator found.</span><br><span class="line">failed to initialize HAX: Operation not supported by device</span><br></pre></td></tr></table></figure>
+
+<p>明明自己AS里面的模拟器加速没问题,为什么还是提示不能加速呢,解决方案,自己下一个安装一下就好,地址在上面.最后你就可以把自己编译的Android源码跑在模拟器上面了.</p>
+<p><strong>参考链接</strong></p>
+<ol>
+<li><a href="https://www.cnblogs.com/ryanchi/archive/2016/07/18/5682186.html" target="_blank" rel="noopener">https://www.cnblogs.com/ryanchi/archive/2016/07/18/5682186.html</a></li>
+<li><a href="https://blog.csdn.net/qq_36006553/article/details/82860806" target="_blank" rel="noopener">https://blog.csdn.net/qq_36006553/article/details/82860806</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/Android源码/" rel="tag"># Android源码</a>
+            
+          </div>
+        
+
+        
+
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MacBooK-pro编译Android-8-1源码"><span class="nav-number">1.</span> <span class="nav-text">MacBooK pro编译Android 8.1源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工具"><span class="nav-number">1.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原料"><span class="nav-number">1.2.</span> <span class="nav-text">原料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作步骤"><span class="nav-number">1.3.</span> <span class="nav-text">操作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载源码"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. 下载源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-创建磁盘映像"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 创建磁盘映像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-安装macPorts软件"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.安装macPorts软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-下载Mac-SDK-10-12"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.下载Mac SDK 10.12</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-解除文件数量限制"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.解除文件数量限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-设置bison"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.设置bison</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-设置JVM的最大堆栈"><span class="nav-number">1.3.7.</span> <span class="nav-text">7.设置JVM的最大堆栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-下载驱动"><span class="nav-number">1.3.8.</span> <span class="nav-text">8.下载驱动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-编译"><span class="nav-number">1.3.9.</span> <span class="nav-text">9.编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-模拟器"><span class="nav-number">1.3.10.</span> <span class="nav-text">10.模拟器</span></a></li></ol></li></ol></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.png"
+      alt="笨呆呆">
+  <p class="site-author-name" itemprop="name">笨呆呆</p>
+  <div class="site-description" itemprop="description">努力成为一个普通人</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        
+      </div>
+    
+  </nav>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">笨呆呆</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
