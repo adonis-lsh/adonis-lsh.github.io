@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-17T04:29:52.864Z</updated>
+  <updated>2019-09-24T15:04:21.295Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MacBooK pro调试Android 8.1源码</title>
+    <link href="http://yoursite.com/2019/09/24/MacBooK-pro%E8%B0%83%E8%AF%95Android-8-1%E6%BA%90%E7%A0%81/"/>
+    <id>http://yoursite.com/2019/09/24/MacBooK-pro调试Android-8-1源码/</id>
+    <published>2019-09-24T15:03:27.000Z</published>
+    <updated>2019-09-24T15:04:21.295Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MacBooK-pro调试Android-8-1源码&quot;&gt;&lt;a href=&quot;#MacBooK-pro调试Android-8-1源码&quot; class=&quot;headerlink&quot; title=&quot;MacBooK pro调试Android 8.1源码&quot;&gt;&lt;/a&gt;MacBooK pro调试Android 8.1源码&lt;/h1&gt;&lt;h2 id=&quot;工具的选择&quot;&gt;&lt;a href=&quot;#工具的选择&quot; class=&quot;headerlink&quot; title=&quot;工具的选择&quot;&gt;&lt;/a&gt;工具的选择&lt;/h2&gt;&lt;p&gt;1.Android Studio(可以看,可以调试)&lt;br&gt;2.understand (只适合看)&lt;/p&gt;&lt;p&gt;macbook pro基本上只有这两款可以选择,刚开始用了understand发现并不怎么好使,也许是没有使用习惯,我们在看源码的时候,有一些过程肯定也是需要调试才知道某些方法执行的先后顺序,所以我最终选择了AS,原来的时候也用AS 2.3看过源码,那时候下面一直再scan index,导致没法正常调式.最新的AS 3.5没有这个问题.&lt;/p&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>MacBooK pro编译Android 8.1源码</title>
