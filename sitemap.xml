@@ -277,13 +277,6 @@
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/tags/AndroidStudio-git-bug/</loc>
-    <lastmod>2021-06-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lishenghui.top/tags/Android7-0%E9%80%82%E9%85%8D/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
@@ -312,6 +305,13 @@
   </url>
   
   <url>
+    <loc>https://www.lishenghui.top/tags/AndroidStudio-git-bug/</loc>
+    <lastmod>2021-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.lishenghui.top/tags/Android/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
@@ -326,14 +326,14 @@
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/tags/Gradle-gradle%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://www.lishenghui.top/tags/Flutter/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/tags/Flutter/</loc>
+    <loc>https://www.lishenghui.top/tags/Gradle-gradle%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
