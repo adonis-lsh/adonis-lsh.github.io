@@ -333,13 +333,6 @@
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/tags/Gradle-gradle%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2021-06-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://www.lishenghui.top/tags/kotlin/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
@@ -348,6 +341,13 @@
   
   <url>
     <loc>https://www.lishenghui.top/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-06-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.lishenghui.top/tags/Gradle-gradle%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -482,14 +482,14 @@
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/categories/java-web/</loc>
+    <loc>https://www.lishenghui.top/categories/Android%E6%BA%90%E7%A0%81/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://www.lishenghui.top/categories/Android%E6%BA%90%E7%A0%81/</loc>
+    <loc>https://www.lishenghui.top/categories/java-web/</loc>
     <lastmod>2021-06-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
