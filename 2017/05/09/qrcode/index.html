@@ -1,0 +1,279 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>通过颜色矩阵创建花样二维码 | 笨呆呆的编程之旅</title><meta name="keywords" content="Android,二维码,花样,颜色矩阵"><meta name="author" content="adonis-lsh"><meta name="copyright" content="adonis-lsh"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="如何是你的二维码更有个性,比如微信,支付宝,他们都有切换不同样式的二维码,如何自己也实现一个呢? 二维码说白了就是上面的黑白点相当于计算机的0,1代码来储存的数据,所以我们可以改变黑色的点为其他深色的点,信息一样不会丢失,基于这些,我们就可以做一些花样的二维码出来了 废话不多说,先上图.  为了模拟,我选了几张水印图,已经有正方形空白的背景图,还有包含背景图空白位置坐标的json.  - 第一个集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过颜色矩阵创建花样二维码">
+<meta property="og:url" content="https://www.lishenghui.top/2017/05/09/qrcode/index.html">
+<meta property="og:site_name" content="笨呆呆的编程之旅">
+<meta property="og:description" content="如何是你的二维码更有个性,比如微信,支付宝,他们都有切换不同样式的二维码,如何自己也实现一个呢? 二维码说白了就是上面的黑白点相当于计算机的0,1代码来储存的数据,所以我们可以改变黑色的点为其他深色的点,信息一样不会丢失,基于这些,我们就可以做一些花样的二维码出来了 废话不多说,先上图.  为了模拟,我选了几张水印图,已经有正方形空白的背景图,还有包含背景图空白位置坐标的json.  - 第一个集">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver2.jpg">
+<meta property="article:published_time" content="2017-05-09T08:26:33.000Z">
+<meta property="article:modified_time" content="2021-06-09T08:41:33.694Z">
+<meta property="article:author" content="adonis-lsh">
+<meta property="article:tag" content="Android">
+<meta property="article:tag" content="二维码">
+<meta property="article:tag" content="花样">
+<meta property="article:tag" content="颜色矩阵">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver2.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/avatar_lish.png"><link rel="canonical" href="https://www.lishenghui.top/2017/05/09/qrcode/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"prismjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '通过颜色矩阵创建花样二维码',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-06-09 16:41:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="笨呆呆的编程之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/avatar_lish.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver2.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">笨呆呆的编程之旅</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">通过颜色矩阵创建花样二维码</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2017-05-09T08:26:33.000Z" title="发表于 2017-05-09 16:26:33">2017-05-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-06-09T08:41:33.694Z" title="更新于 2021-06-09 16:41:33">2021-06-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/">工作总结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">878</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="通过颜色矩阵创建花样二维码"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>如何是你的二维码更有个性,比如微信,支付宝,他们都有切换不同样式的二维码,如何自己也实现一个呢? 二维码说白了就是上面的黑白点相当于计算机的0,1代码来储存的数据,所以我们可以改变黑色的点为其他深色的点,信息一样不会丢失,基于这些,我们就可以做一些花样的二维码出来了 废话不多说,先上图.</p>
+<p><img src="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/17-5-9/46671669-file_1494316087189_10462.gif"></p>
+<p>为了模拟,我选了几张水印图,已经有正方形空白的背景图,还有包含背景图空白位置坐标的json.</p>
+<p><img src="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/17-5-9/76587176-file_1494317104939_e3bd.png"> - 第一个集合里面存放的是水印图片 - 第二个集合里面存放的是含有中心空白方块的背景图片 - 第三个集合里面存放的是包含背景图空白位置坐标的json 下面说说我的两种思路.</p>
+<h2 id="第一种-程序员的思路"><a href="#第一种-程序员的思路" class="headerlink" title="第一种:程序员的思路:"></a>第一种:程序员的思路:</h2><ol>
+<li> 先生成一个二维码</li>
+<li> 把二维码的像素点和水印图片的像素点进行重新的颜色组合生成一张新的图片</li>
+<li>把这张图片画到背景图片的空白区域 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> drawableList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>a<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>b<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>c<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>d<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>e<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>f<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>g<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>h<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>i<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>j<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>k<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>l<span class="token punctuation">,</span> m<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>n<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>o<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>p<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>q<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>r<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>s<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>a<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> backgroundDrawbleList <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>aa<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>kk<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>jj<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>dd<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ee<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ff<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>gg<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>hh<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>mm<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>jj<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>kk<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ll<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>mm<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>aa<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ll<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>kk<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>dd<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ee<span class="token punctuation">,</span>
+<span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>ff<span class="token punctuation">,</span> <span class="token class-name">R</span><span class="token punctuation">.</span>drawable<span class="token punctuation">.</span>gg<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> drawableJsons <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token string">"aa.json"</span><span class="token punctuation">,</span> <span class="token string">"kk.json"</span><span class="token punctuation">,</span>
+<span class="token string">"jj.json"</span><span class="token punctuation">,</span> <span class="token string">"dd.json"</span><span class="token punctuation">,</span> <span class="token string">"ee.json"</span><span class="token punctuation">,</span> <span class="token string">"ff.json"</span><span class="token punctuation">,</span>
+<span class="token string">"gg.json"</span><span class="token punctuation">,</span> <span class="token string">"hh.json"</span><span class="token punctuation">,</span> <span class="token string">"mm.json"</span><span class="token punctuation">,</span> <span class="token string">"jj.json"</span><span class="token punctuation">,</span>
+<span class="token string">"kk.json"</span><span class="token punctuation">,</span> <span class="token string">"ll.json"</span><span class="token punctuation">,</span> <span class="token string">"mm.json"</span><span class="token punctuation">,</span> <span class="token string">"aa.json"</span><span class="token punctuation">,</span>
+<span class="token string">"ll.json"</span><span class="token punctuation">,</span> <span class="token string">"kk.json"</span><span class="token punctuation">,</span> <span class="token string">"dd.json"</span><span class="token punctuation">,</span> <span class="token string">"ee.json"</span><span class="token punctuation">,</span>
+<span class="token string">"ff.json"</span><span class="token punctuation">,</span> <span class="token string">"gg.json"</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> random <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Bitmap</span> mwatermark <span class="token operator">=</span> <span class="token class-name">MakeQRCodeUtil</span><span class="token punctuation">.</span><span class="token function">drawableToBitmap</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> drawableList<span class="token punctuation">[</span>random<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Bitmap</span> backgroundImage <span class="token operator">=</span> <span class="token class-name">MakeQRCodeUtil</span><span class="token punctuation">.</span><span class="token function">drawableToBitmap</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> backgroundDrawbleList<span class="token punctuation">[</span>random<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> fileName <span class="token operator">=</span> drawableJsons<span class="token punctuation">[</span>random<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token class-name">String</span> json <span class="token operator">=</span> <span class="token class-name">Util</span><span class="token punctuation">.</span><span class="token function">readAssertResource</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span>fileName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">BitmapPosition</span> mBitmapPosition <span class="token operator">=</span> <span class="token class-name">Util</span><span class="token punctuation">.</span><span class="token function">json2Bean</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> <span class="token class-name">BitmapPosition</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> size <span class="token operator">=</span> mBitmapPosition<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> x <span class="token operator">=</span> mBitmapPosition<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> y <span class="token operator">=</span> mBitmapPosition<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Bitmap</span> qrCode <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+qrCode <span class="token operator">=</span> <span class="token function">makeQRImage</span><span class="token punctuation">(</span><span class="token string">"www.bendaidai.top"</span><span class="token punctuation">,</span> mwatermark<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">WriterException</span> e<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+qrCode<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+qrCode<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> bgWidth <span class="token operator">=</span> backgroundImage<span class="token punctuation">.</span><span class="token function">getWidth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> bgHeight <span class="token operator">=</span> backgroundImage<span class="token punctuation">.</span><span class="token function">getHeight</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Bitmap</span> newmap <span class="token operator">=</span> <span class="token class-name">Bitmap</span><span class="token punctuation">.</span><span class="token function">createBitmap</span><span class="token punctuation">(</span>bgWidth<span class="token punctuation">,</span> bgHeight<span class="token punctuation">,</span>
+<span class="token class-name">Bitmap<span class="token punctuation">.</span>Config</span><span class="token punctuation">.</span>ARGB_4444<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Paint</span> paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Canvas</span> canvas <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Canvas</span><span class="token punctuation">(</span>newmap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Rect</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">drawBitmap</span><span class="token punctuation">(</span>backgroundImage<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+rect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token operator">*</span>x<span class="token punctuation">,</span> <span class="token number">3</span><span class="token operator">*</span>y<span class="token punctuation">,</span> <span class="token number">3</span><span class="token operator">*</span><span class="token punctuation">(</span>x <span class="token operator">+</span> size<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token operator">*</span><span class="token punctuation">(</span>y <span class="token operator">+</span> size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">drawBitmap</span><span class="token punctuation">(</span>qrCode<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> rect<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token class-name">Canvas</span><span class="token punctuation">.</span>ALL_SAVE_FLAG<span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> newmap<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ol>
+<h2 id="第二种-小孩子的思路"><a href="#第二种-小孩子的思路" class="headerlink" title="第二种:小孩子的思路"></a>第二种:小孩子的思路</h2><p>不就是一个二维码下面放了一张图片吗?你把二维码黑色部分变成透明的颜色,让下面的背景颜色透过来不就行了吗? 1. 先生成一个二维码 2. 通过颜色矩阵来给二维码黑色的部分变成透明的 3. 把水印和二维码都放到背景图片的空白区域</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//我在这边拿到二维码</span>
+<span class="token class-name">Drawable</span> qrCodeImage <span class="token operator">=</span> <span class="token function">getDrawable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">BitmapDrawable</span> bd <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">BitmapDrawable</span><span class="token punctuation">)</span> qrCodeImage<span class="token punctuation">;</span>
+<span class="token comment">//获取位图</span>
+bitmap <span class="token operator">=</span> bd<span class="token punctuation">.</span><span class="token function">getBitmap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">ColorMatrix</span> colorMatrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ColorMatrix</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">float</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span>
+        <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mPaint<span class="token punctuation">.</span><span class="token function">setColorFilter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ColorMatrixColorFilter</span><span class="token punctuation">(</span>colorMatrix<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Rect</span> rect <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> background <span class="token operator">=</span> <span class="token function">dip2px</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mScale <span class="token operator">=</span> background <span class="token operator">/</span> <span class="token number">1000.0</span><span class="token punctuation">;</span>
+rect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>mBitmapPosition<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> mScale<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>mBitmapPosition<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> mScale<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>
+                <span class="token punctuation">(</span>mBitmapPosition<span class="token punctuation">.</span><span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> mBitmapPosition<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> mScale<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>mBitmapPosition<span class="token punctuation">.</span><span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> mBitmapPosition<span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> mScale<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">Paint</span> paint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Paint</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">drawBitmap</span><span class="token punctuation">(</span>mwatermark<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> rect<span class="token punctuation">,</span> paint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">drawBitmap</span><span class="token punctuation">(</span>bitmap<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> rect<span class="token punctuation">,</span> mPaint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+canvas<span class="token punctuation">.</span><span class="token function">restore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setBackgroundResource</span><span class="token punctuation">(</span>mBackDrawable<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><p>上面只是部分代码,完整demo地址,<a target="_blank" rel="noopener" href="https://github.com/adonis-lsh/VariousQRcode">https://github.com/adonis-lsh/VariousQRcode</a> 如果你在项目中使用,请记得开子线程.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">adonis-lsh</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.lishenghui.top/2017/05/09/qrcode/">https://www.lishenghui.top/2017/05/09/qrcode/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.lishenghui.top" target="_blank">笨呆呆的编程之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android/">Android</a><a class="post-meta__tags" href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/">二维码</a><a class="post-meta__tags" href="/tags/%E8%8A%B1%E6%A0%B7/">花样</a><a class="post-meta__tags" href="/tags/%E9%A2%9C%E8%89%B2%E7%9F%A9%E9%98%B5/">颜色矩阵</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver2.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/05/10/reactnative-01/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver3.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">ReactNative(环境搭建及工具配置)</div></div></a></div><div class="next-post pull-right"><a href="/2017/05/08/android7-fileprovide/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver2.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Android7.0适配之FileProvide(拍照,裁剪,应用安装)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2017/06/16/databinding/" title="DataBinding详细的使用方法及工作中常遇到的问题"><img class="cover" src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2017-06-16</div><div class="title">DataBinding详细的使用方法及工作中常遇到的问题</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/avatar_lish.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">adonis-lsh</div><div class="author-info__description">只有不断探索的人,才是最牛逼的</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">28</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/adonis-lsh"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/adonis-lsh" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lishenghui@live.cn" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">希望你看了之后能有所收获</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D-%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">第一种:程序员的思路:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D-%E5%B0%8F%E5%AD%A9%E5%AD%90%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">第二种:小孩子的思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA"><span class="toc-number">2.1.</span> <span class="toc-text">提示</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/07/14/java-web/" title="java_web 编写一个简单的超市管理系统"><img src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java_web 编写一个简单的超市管理系统"/></a><div class="content"><a class="title" href="/2020/07/14/java-web/" title="java_web 编写一个简单的超市管理系统">java_web 编写一个简单的超市管理系统</a><time datetime="2020-07-14T03:25:57.000Z" title="发表于 2020-07-14 11:25:57">2020-07-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/04/26/reactnative-02/" title="ReactNative(日常遇到的问题)"><img src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ReactNative(日常遇到的问题)"/></a><div class="content"><a class="title" href="/2020/04/26/reactnative-02/" title="ReactNative(日常遇到的问题)">ReactNative(日常遇到的问题)</a><time datetime="2020-04-26T11:54:24.000Z" title="发表于 2020-04-26 19:54:24">2020-04-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/09/24/aosp02/" title="MacOS查看Android 8.1源码"><img src="https://raw.githubusercontent.com/adonis-lsh/image_storage/master/img/2021/9.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MacOS查看Android 8.1源码"/></a><div class="content"><a class="title" href="/2019/09/24/aosp02/" title="MacOS查看Android 8.1源码">MacOS查看Android 8.1源码</a><time datetime="2019-09-24T15:09:30.000Z" title="发表于 2019-09-24 23:09:30">2019-09-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/09/16/aosp01/" title="MacOS编译Android 8.1源码"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fzkres2.myzaker.com%2F202003%2F5e72abdc8e9f0956a37089fe_1024.jpg&amp;refer=http%3A%2F%2Fzkres2.myzaker.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1625668320&amp;t=bed686d263845c1b86667db5aafe2ec7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MacOS编译Android 8.1源码"/></a><div class="content"><a class="title" href="/2019/09/16/aosp01/" title="MacOS编译Android 8.1源码">MacOS编译Android 8.1源码</a><time datetime="2019-09-16T11:15:39.000Z" title="发表于 2019-09-16 19:15:39">2019-09-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/03/19/xiao-baiswitch-po-jie-liu-cheng-chu-tan/" title="小白switch破解流程初探"><img src="https://cdn.jsdelivr.net/gh/adonis-lsh/image_storage/img/2021/conver3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="小白switch破解流程初探"/></a><div class="content"><a class="title" href="/2019/03/19/xiao-baiswitch-po-jie-liu-cheng-chu-tan/" title="小白switch破解流程初探">小白switch破解流程初探</a><time datetime="2019-03-19T06:22:38.000Z" title="发表于 2019-03-19 14:22:38">2019-03-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By adonis-lsh</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '8ae2a01adf2ada8d89c4',
+      clientSecret: '2d040e05c3dcde4571d26997dfae1520211fcc44',
+      repo: 'adonis-lsh.github.io',
+      owner: 'adonis-lsh',
+      admin: ['adonis-lsh'],
+      id: '028303822a6474361d33a72513a5e5d5',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
